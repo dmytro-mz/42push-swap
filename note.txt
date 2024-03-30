@@ -1,0 +1,43 @@
+=======================================Reversable operations
+pa <--> pb
+sa <--> sa
+sb <--> sb
+ra <--> rra
+rb <--> rrb
+=======================================Simplification
+Don't use rr and rrr, instead substitude result sequence "ra, rb" into rr
+=======================================Sequences with same result
+pb, pb, sb <===> sa, pb, pb
+
+
+
+
+n8 n7 n6 n5 n4 n3 n2 n1 |
+pb
+n8 n7 n6 n5 n4 n3 n2 | n1
+pb
+n8 n7 n6 n5 n4 n3 | n2 n1
+
+
+
+Strat:
+1) find simple solution
+	- untill a not empty
+		move smallest to top
+		pb
+	- untill b not empty
+		pa
+2) iterative improvement
+	n_substitutions = 0
+	start = head
+	run up to 7 steps of brute force search
+		on each step look 100 steps forward and check is shortcut found
+		save best short cut
+	if shortcut found
+		n_substitutions++
+		move shortcut steps
+	else
+		move 7 steps
+	if end reached and n_substitutions >0
+		repeat
+
