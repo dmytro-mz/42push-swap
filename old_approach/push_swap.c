@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operation_push.c                                   :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 12:48:28 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/04/05 20:49:08 by dmoroz           ###   ########.fr       */
+/*   Updated: 2024/03/31 18:18:04 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_b(t_state *state, t_list **solution)
+void	push_swap(t_state *head)
 {
-	ft_lstadd_back(solution, ft_lstnew("pa"));
-	if (state->break_point < state->size)
-		state->break_point++;
+	t_solution	*solution;
+
+	solution = create_simple_solution(head);
+	solution = optimize_solution(solution);
+	print_solution(solution);
+	clear_solution(solution);
 }
 
-void	push_a(t_state *state, t_list **solution)
+int	main(int ac, char **av)
 {
-	ft_lstadd_back(solution, ft_lstnew("pa"));
-	if (state->break_point > 0)
-		state->break_point--;
+	t_state	*head;
+
+	if (ac > 1)
+	{
+		head = parse_args(ac - 1, av);
+		push_swap(head);
+	}
+	return (0);
 }

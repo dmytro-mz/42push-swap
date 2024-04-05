@@ -6,18 +6,18 @@
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 19:31:50 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/03/31 19:32:09 by dmoroz           ###   ########.fr       */
+/*   Updated: 2024/04/03 17:36:19 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_a_empty(t_solution *s)
+int	is_a_empty(t_state state)
 {
-	return (s->state.break_point == s->state.size);
+	return (state.break_point == state.size);
 }
 
-int	is_b_empty(t_solution *s)
+int	is_b_empty(t_state state)
 {
-	return (s->state.break_point == 0);
+	return (state.break_point == 0);
 }

@@ -6,7 +6,7 @@
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 12:45:08 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/03/31 20:16:04 by dmoroz           ###   ########.fr       */
+/*   Updated: 2024/04/05 20:53:40 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
+# include <limits.h>
 
 typedef struct s_state
 {
@@ -22,29 +23,41 @@ typedef struct s_state
 	unsigned int	break_point;
 }					t_state;
 
-typedef struct s_solution
-{
-	t_state				state;
-	char				instr[4];
-	struct s_solution	*next;
-}						t_solution;
-
-t_state		*parse_args(int size, char **args);
-t_solution	*apply_simple_strategy(t_solution *solution);
-
-//operation_push
-t_solution	*push_a(t_solution *s);
-t_solution	*push_b(t_solution *s);
-// operation_rotate
-t_solution	*rotate_a(t_solution *s);
-t_solution	*rotate_b(t_solution *s);
-t_solution	*rotate_ab(t_solution *s);
-
-//is_empty_stack
-int			is_a_empty(t_solution *s);
-int			is_b_empty(t_solution *s);
-//get_stack_head
-int			get_a_head(t_solution *s);
-int			get_b_head(t_solution *s);
+t_list				*bubble_sort(t_state state);
+t_list				*ez_sort(t_state state);
+t_state				parse_args(unsigned int size, char **args);
+// operation push
+void				push_a(t_state *state, t_list **solution);
+void				push_b(t_state *state, t_list **solution);
+// operation swap
+void				swap_a(t_state *state, t_list **solution);
+void				swap_b(t_state *state, t_list **solution);
+void				swap_ab(t_state *state, t_list **solution);
+// operation rotate
+void				rot_a(t_state *state, t_list **solution);
+void				rot_b(t_state *state, t_list **solution);
+void				rot_ab(t_state *state, t_list **solution);
+// operation reverse rotate
+void				rrot_a(t_state *state, t_list **solution);
+void				rrot_b(t_state *state, t_list **solution);
+void				rrot_ab(t_state *state, t_list **solution);
+// get_stack_edge
+int					get_a_head(t_state *state);
+int					get_b_head(t_state *state);
+int					get_a_tail(t_state *state);
+int					get_b_tail(t_state *state);
+// is_empty
+int					is_a_empty(t_state state);
+int					is_b_empty(t_state state);
+// args validation
+int					validate_arg(char *s);
+int					validate_uniqueness(int *array, unsigned int size);
+// other
+void				move_a_to_n(t_state *state, int n, t_list **solution);
+int					is_sorted(t_state state);
+int					get_smallest_a(t_state state);
+void				repeat(void (*f)(t_state *, t_list **), int n,
+						t_state *state, t_list **solution);
+void				check_malloc(void *ptr);
 
 #endif

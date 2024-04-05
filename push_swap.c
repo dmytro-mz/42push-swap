@@ -6,30 +6,72 @@
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 12:48:28 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/03/31 18:18:04 by dmoroz           ###   ########.fr       */
+/*   Updated: 2024/04/05 20:38:15 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_swap(t_state *head)
-{
-	t_solution	*solution;
-
-	solution = create_simple_solution(head);
-	solution = optimize_solution(solution);
-	print_solution(solution);
-	clear_solution(solution);
-}
+static void		try_strategy(t_state stack, t_list *(*f)(t_state),
+					t_list **best_stack, int *best_stack_len);
+static void		print_solution(t_list *best);
+static t_state	get_stack_copy(t_state state);
 
 int	main(int ac, char **av)
 {
-	t_state	*head;
+	t_state	stack;
+	t_list	*best;
+	int		best_len;
 
 	if (ac > 1)
 	{
-		head = parse_args(ac - 1, av);
-		push_swap(head);
+		stack = parse_args(ac - 1, av + 1);
+		if (!is_sorted(stack))
+		{
+			best = NULL;
+			best_len = INT_MAX;
+			try_strategy(stack, &bubble_sort, &best, &best_len);
+			try_strategy(stack, &ez_sort, &best, &best_len);
+			print_solution(best);
+		}
 	}
 	return (0);
+}
+
+static void	try_strategy(t_state stack, t_list *(*f)(t_state),
+		t_list **best_stack, int *best_stack_len)
+{
+	int		solution_len;
+	t_list	*solution;
+	t_state	copy;
+
+	copy = get_stack_copy(stack);
+	solution = (*f)(copy);
+	solution_len = ft_lstsize(solution);
+	if (solution_len < *best_stack_len)
+	{
+		*best_stack = solution;
+		*best_stack_len = solution_len;
+	}
+	free(copy.stacks);
+}
+
+static t_state	get_stack_copy(t_state state)
+{
+	t_state	copy;
+
+	copy.stacks = malloc(sizeof(int) * state.size);
+	ft_memmove(copy.stacks, state.stacks, state.size * sizeof(int));
+	copy.size = state.size;
+	copy.break_point = state.break_point;
+	return (copy);
+}
+
+static void	print_solution(t_list *best)
+{
+	while (best)
+	{
+		ft_putendl_fd(best->content, 1);
+		best = best->next;
+	}
 }

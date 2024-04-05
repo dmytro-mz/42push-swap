@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operation_push.c                                   :+:      :+:    :+:   */
+/*   get_smallest.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 12:48:28 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/04/05 20:49:08 by dmoroz           ###   ########.fr       */
+/*   Updated: 2024/04/05 19:18:23 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_b(t_state *state, t_list **solution)
+int	get_smallest_a(t_state state)
 {
-	ft_lstadd_back(solution, ft_lstnew("pa"));
-	if (state->break_point < state->size)
-		state->break_point++;
-}
+	int				min;
+	unsigned int	i;
 
-void	push_a(t_state *state, t_list **solution)
-{
-	ft_lstadd_back(solution, ft_lstnew("pa"));
-	if (state->break_point > 0)
-		state->break_point--;
+	i = state.break_point;
+	min = state.stacks[i++];
+	while (i < state.size)
+	{
+		if (state.stacks[i] < min)
+			min = state.stacks[i];
+		i++;
+	}
+	return (min);
 }

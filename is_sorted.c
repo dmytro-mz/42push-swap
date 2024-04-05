@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operation_push.c                                   :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 12:48:28 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/04/05 20:49:08 by dmoroz           ###   ########.fr       */
+/*   Updated: 2024/04/05 19:20:49 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_b(t_state *state, t_list **solution)
+int	is_sorted(t_state state)
 {
-	ft_lstadd_back(solution, ft_lstnew("pa"));
-	if (state->break_point < state->size)
-		state->break_point++;
-}
+	unsigned int	i;
 
-void	push_a(t_state *state, t_list **solution)
-{
-	ft_lstadd_back(solution, ft_lstnew("pa"));
-	if (state->break_point > 0)
-		state->break_point--;
+	i = 0;
+	while (i < state.size - 1)
+	{
+		if (state.stacks[i] > state.stacks[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
 }

@@ -1,6 +1,8 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -c
 
+LIBFT_DIR = ../libft
+
 NAME = libftprintf.a
 SRCS = ft_printf.c \
 ./print_single_format/skip_single_format.c \
@@ -19,10 +21,10 @@ SRCS = ft_printf.c \
 ./print_single_format/print_per_conv/print_uhex_conv.c \
 ./print_single_format/print_single_format.c
 OBJS = $(SRCS:.c=.o)
-INCS = ./ft_printf.h ./libft/libft.h ./print_single_format/print_single_format.h
+INCS = ./ft_printf.h $(LIBFT_DIR)/libft.h ./print_single_format/print_single_format.h
 INCS_DIR = $(dir $(INCS))
 INC_FLAGS = $(addprefix -I, $(INCS_DIR))
-LIB_FLAGS = -L./libft/ -lft
+LIB_FLAGS = -L$(LIBFT_DIR)/ -lft
 
 all: $(NAME)
 
@@ -30,7 +32,7 @@ all: $(NAME)
 	$(CC) $(CFLAGS) $(INC_FLAGS) $(LIB_FLAGS) $< -o $@ 
 
 $(NAME): libft $(OBJS)
-	cp ./libft/libft.a $(NAME)
+	cp $(LIBFT_DIR)/libft.a $(NAME)
 	ar r $(NAME) $(OBJS)
 
 clean:
@@ -44,6 +46,6 @@ re: fclean all
 bonus: all
 
 libft:
-	$(MAKE) -C ./libft
+	$(MAKE) all bonus clean -C $(LIBFT_DIR)
 
 .PHONY: all clean fclean re bonus libft

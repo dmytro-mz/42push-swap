@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operation_push.c                                   :+:      :+:    :+:   */
+/*   check_malloc.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 12:48:28 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/04/05 20:49:08 by dmoroz           ###   ########.fr       */
+/*   Updated: 2024/04/05 20:33:12 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_b(t_state *state, t_list **solution)
+void	check_malloc(void *ptr)
 {
-	ft_lstadd_back(solution, ft_lstnew("pa"));
-	if (state->break_point < state->size)
-		state->break_point++;
-}
-
-void	push_a(t_state *state, t_list **solution)
-{
-	ft_lstadd_back(solution, ft_lstnew("pa"));
-	if (state->break_point > 0)
-		state->break_point--;
+	if (!ptr)
+	{
+		ft_putendl_fd("Error", 2);
+		exit(42);
+	}
 }

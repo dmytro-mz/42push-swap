@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operation_push.c                                   :+:      :+:    :+:   */
+/*   is_empty_stack.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/30 12:48:28 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/04/05 20:49:08 by dmoroz           ###   ########.fr       */
+/*   Created: 2024/03/31 19:31:50 by dmoroz            #+#    #+#             */
+/*   Updated: 2024/03/31 19:32:09 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_b(t_state *state, t_list **solution)
+int	is_a_empty(t_solution *s)
 {
-	ft_lstadd_back(solution, ft_lstnew("pa"));
-	if (state->break_point < state->size)
-		state->break_point++;
+	return (s->state.break_point == s->state.size);
 }
 
-void	push_a(t_state *state, t_list **solution)
+int	is_b_empty(t_solution *s)
 {
-	ft_lstadd_back(solution, ft_lstnew("pa"));
-	if (state->break_point > 0)
-		state->break_point--;
+	return (s->state.break_point == 0);
 }
