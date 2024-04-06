@@ -10,8 +10,10 @@ LIBFT = $(addprefix $(LIBFT_DIR)/, $(LIBFT_NAME))
 NAME = push_swap
 SRCS = operation_swap.c \
        sort_ez.c \
-       sort_bubble.c \
-       get_smallest.c \
+       sort_ez_pz.c \
+       sort_bubble_min.c \
+       sort_bubble_max.c \
+       get_stack_extremum.c \
        validate_args.c \
        push_swap.c \
        operation_push.c \

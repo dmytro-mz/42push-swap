@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_bubble.c                                      :+:      :+:    :+:   */
+/*   sort_bubble_min.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 12:48:28 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/04/05 20:50:26 by dmoroz           ###   ########.fr       */
+/*   Updated: 2024/04/06 10:16:20 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	is_solved(t_state state, int smallest);
 static void	move_to_closest_swap(t_state *state, int min, t_list **solution);
 
-t_list	*bubble_sort(t_state state)
+t_list	*bubble_sort_min(t_state state)
 {
 	int		smallest;
 	t_list	*solution;
@@ -34,12 +34,16 @@ t_list	*bubble_sort(t_state state)
 static int	is_solved(t_state state, int smallest)
 {
 	unsigned int	i;
+	unsigned int	ip1;
 
 	i = 0;
-	while (i < state.size - 1)
+	while (i < state.size)
 	{
-		if (state.stacks[i + 1] != smallest)
-			if (state.stacks[i] > state.stacks[i + 1])
+		ip1 = i + 1;
+		if (i == state.size - 1)
+			ip1 = 0;
+		if (state.stacks[ip1] != smallest)
+			if (state.stacks[i] > state.stacks[ip1])
 				return (0);
 		i++;
 	}

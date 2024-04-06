@@ -6,7 +6,7 @@
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 12:48:28 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/04/05 21:23:06 by dmoroz           ###   ########.fr       */
+/*   Updated: 2024/04/06 15:29:53 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	rot_b(t_state *state, t_list **solution)
 		top = get_b_head(state);
 		ft_memmove(state->stacks + 1, state->stacks, (state->break_point - 1)
 			* sizeof(int));
-		state->stacks[state->break_point - 1] = top;
+		state->stacks[0] = top;
 	}
 }
 
@@ -59,6 +59,6 @@ void	rot_ab(t_state *state, t_list **solution)
 		top = get_b_head(state);
 		ft_memmove(state->stacks + 1, state->stacks, (state->break_point - 1)
 			* sizeof(int));
-		state->stacks[state->break_point - 1] = top;
+		state->stacks[0] = top;
 	}
 }
