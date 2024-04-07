@@ -34,7 +34,7 @@ int	main(int ac, char **av)
 			try_strategy(stack, &bubble_sort_max, &best, &best_len);
 			try_strategy(stack, &ez_sort, &best, &best_len);
 			try_strategy(stack, &ez_pz_sort, &best, &best_len);
-			exit(44);
+			exit(44); // TODO
 			print_solution(best);
 		}
 	}
@@ -51,8 +51,8 @@ static void	try_strategy(t_state stack, t_list *(*f)(t_state),
 	copy = get_stack_copy(stack);
 	solution = (*f)(copy);
 	solution_len = ft_lstsize(solution);
-	#include "ft_printf.h"
-	ft_printf("%d\n", solution_len);
+	#include "ft_printf.h" // TODO
+	ft_printf("%d\n", solution_len); // TODO
 	if (solution_len < *best_stack_len)
 	{
 		*best_stack = solution;
@@ -66,6 +66,7 @@ static t_state	get_stack_copy(t_state state)
 	t_state	copy;
 
 	copy.stacks = malloc(sizeof(int) * state.size);
+	// check malloc
 	ft_memmove(copy.stacks, state.stacks, state.size * sizeof(int));
 	copy.size = state.size;
 	copy.break_point = state.break_point;
