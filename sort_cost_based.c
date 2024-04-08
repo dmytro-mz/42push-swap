@@ -76,16 +76,39 @@ t_list	*get_best_bubble_solution(t_state *state)
 {
 	int	min_len;
 	int	max_len;
+	t_list **mock;
 
 	min_len = INT_MAX;
 	max_len = INT_MAX;
-	try_strategy(*state, &bubble_sort_min, NULL, &min_len);
-	try_strategy(*state, &bubble_sort_max, NULL, &max_len);
+	try_strategy(*state, &bubble_sort_min, mock, &min_len);
+	try_strategy(*state, &bubble_sort_max, mock, &max_len);
 	if (min_len <= max_len)
 		return (bubble_sort_min(*state));
 	return (bubble_sort_max(*state));
 }
 
+typedef struct s_cost_move
+{
+	int a_moves;
+	int b_moves;
+	int size;
+	int breaking_point;
+	int best_cost;
+} t_cost_move;
+
 void do_cost_based_move(t_state *state, t_list **solution)
 {
+	t_cost_move best;
+	t_cost_move cur;
+	int i;
+
+	set_cost_move_defaults(&cur, &best, state);
+	i = 0;
+	while (i < state->break_point)
+	{
+		cur.b_moves = i;
+		cur.a_moves = find_target_pos(state, state->stacks[state->break_point - 1 - i]);
+		estimate_n_update_cost(&cur, &best);
+	}
+	move(state, solution, best);
 }
