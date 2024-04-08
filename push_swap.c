@@ -6,7 +6,7 @@
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 12:48:28 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/04/06 15:49:52 by dmoroz           ###   ########.fr       */
+/*   Updated: 2024/04/08 21:47:31 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int ac, char **av)
 			try_strategy(stack, &bubble_sort_max, &best, &best_len);
 			try_strategy(stack, &ez_sort, &best, &best_len);
 			try_strategy(stack, &ez_pz_sort, &best, &best_len);
-			exit(44); // TODO
+			// exit(44); // TODO
 			print_solution(best);
 		}
 	}
@@ -51,8 +51,8 @@ static void	try_strategy(t_state stack, t_list *(*f)(t_state),
 	copy = get_stack_copy(stack);
 	solution = (*f)(copy);
 	solution_len = ft_lstsize(solution);
-	#include "ft_printf.h" // TODO
-	ft_printf("%d\n", solution_len); // TODO
+	// #include "ft_printf.h" // TODO
+	// ft_printf("%d\n", solution_len); // TODO
 	if (solution_len < *best_stack_len)
 	{
 		*best_stack = solution;
