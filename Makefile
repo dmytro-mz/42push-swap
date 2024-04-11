@@ -10,22 +10,29 @@ LIBFT = $(addprefix $(LIBFT_DIR)/, $(LIBFT_NAME))
 NAME = push_swap
 SRCS = operation_swap.c \
        sort_ez.c \
-       sort_ez_pz.c \
-       sort_bubble_min.c \
-       sort_bubble_max.c \
-       get_stack_extremum.c \
        validate_args.c \
+       sort_bubble_min.c \
+       is_sorted.c \
        push_swap.c \
+       get_stack_extremum.c \
        operation_push.c \
+       move_stack_to_closest_swap.c \
+       try_strategy.c \
        operation_reverse_rotate.c \
+       sort_bubble_max.c \
+       do_cost_based_move.c \
+       check_malloc.c \
+       sort_ez_pz.c \
        rotate_stack_to_n.c \
+       get_stack_size.c \
+       repeat.c \
+       sort_cost_based.c \
        get_stack_edge.c \
+       estimate_n_update_cost.c \
        is_empty_stack.c \
        operation_rotate.c \
        parse_args.c \
-       is_sorted.c \
-       repeat.c \
-       check_malloc.c
+       free_solution.c
 OBJS = $(SRCS:.c=.o)
 INCS = push_swap.h \
        $(LIBFT_DIR)/libft/libft.h \

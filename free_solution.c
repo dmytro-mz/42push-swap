@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_malloc.c                                     :+:      :+:    :+:   */
+/*   free_solution.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/30 12:48:28 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/04/10 17:03:51 by dmoroz           ###   ########.fr       */
+/*   Created: 2024/04/10 17:19:13 by dmoroz            #+#    #+#             */
+/*   Updated: 2024/04/10 17:27:00 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_malloc(void *ptr)
+static void	do_nothing(void *ptr);
+
+void	free_solution(t_list *solution)
 {
-	if (!ptr)
-	{
-		ft_putendl_fd("Error", 2);
-		exit(42);
-	}
+	ft_lstclear(&solution, &do_nothing);
+}
+
+static void	do_nothing(void *ptr)
+{
+	ptr++;
 }

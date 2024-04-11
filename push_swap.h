@@ -6,7 +6,7 @@
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 12:45:08 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/04/06 11:31:06 by dmoroz           ###   ########.fr       */
+/*   Updated: 2024/04/10 17:19:51 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_list				*bubble_sort_min(t_state state);
 t_list				*bubble_sort_max(t_state state);
 t_list				*ez_sort(t_state state);
 t_list				*ez_pz_sort(t_state state);
+t_list				*cost_based_sort(t_state state);
 t_state				parse_args(unsigned int size, char **args);
 // operation push
 void				push_a(t_state *state, t_list **solution);
@@ -60,8 +61,14 @@ int					estimate_move_a_to_n(t_state *state, int n);
 int					is_sorted(t_state state);
 int					get_smallest_a(t_state state);
 int					get_largest_a(t_state state);
+int					get_a_size(t_state *state);
 void				repeat(void (*f)(t_state *, t_list **), int n,
 						t_state *state, t_list **solution);
 void				check_malloc(void *ptr);
+void				try_strategy(t_state stack, t_list *(*f)(t_state),
+						t_list **best_stack, int *best_stack_len);
+void				move_a_to_closest_swap(t_state *state, int n,
+						t_list **solution);
+void				free_solution(t_list *solution);
 
 #endif

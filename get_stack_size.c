@@ -6,13 +6,13 @@
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 12:48:28 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/04/06 15:49:52 by dmoroz           ###   ########.fr       */
+/*   Updated: 2024/04/10 15:55:05 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int get_a_size(t_state *state)
+int	get_a_size(t_state *state)
 {
 	return (state->size - state->break_point);
 }

@@ -1,0 +1,8 @@
+A=(); for ((i=0; i<10; i++)); do A+=($RANDOM); done; B="${A[@]}"; ./push_swap $B | wc -l; ./push_swap $B | ./checker_linux $B; echo $B
+python3 pyviz.py $A
+lldb ./push_swap $B
+
+N=15
+alias ps_run='
+A=(); while [[ ${#A[@]} -lt $N ]]; do random_num=$((RANDOM % 1001 - 500)); if [[ ! " ${A[*]} " =~ " $random_num " ]]; then A+=($random_num); fi; done; B="${A[@]}"; valgrind -q --leak-check=full ./push_swap $B | wc -l; ./push_swap $B | ./checker_linux $B
+'
