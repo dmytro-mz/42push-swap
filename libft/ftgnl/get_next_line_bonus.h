@@ -6,13 +6,14 @@
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 18:12:49 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/03/09 17:48:50 by dmoroz           ###   ########.fr       */
+/*   Updated: 2024/04/14 11:58:58 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
 
+# include "libft.h"
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -29,9 +30,6 @@ typedef struct s_fd_buffer
 }						t_fd_buffer;
 
 char					*get_next_line(int fd);
-unsigned int			ft_strlen(const char *s);
-void					*ft_memmove(void *dst, const void *src,
-							unsigned int len);
 char					*my_strnjoin(char *line, char *buffer,
 							unsigned int buff_n, unsigned int *line_size);
 t_fd_buffer				*get_fd_buffer(t_fd_buffer **fd_buffers, int fd);

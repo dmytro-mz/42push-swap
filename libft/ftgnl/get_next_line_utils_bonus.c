@@ -6,45 +6,11 @@
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 18:18:09 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/03/09 17:47:42 by dmoroz           ###   ########.fr       */
+/*   Updated: 2024/04/14 11:58:49 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-
-unsigned int	ft_strlen(const char *s)
-{
-	unsigned int	size;
-
-	size = 0;
-	while (s[size])
-		size++;
-	return (size);
-}
-
-void	*ft_memmove(void *dst, const void *src, unsigned int len)
-{
-	int				dir;
-	unsigned int	i;
-
-	if (len == 0 || dst == src)
-		return (dst);
-	dir = 1;
-	i = 0;
-	if (dst > src)
-	{
-		dir = -1;
-		i = len - 1;
-	}
-	while (i < len)
-	{
-		((char *)dst)[i] = ((char *)src)[i];
-		if (i == 0 && dir == -1)
-			break ;
-		i += dir;
-	}
-	return (dst);
-}
 
 char	*my_strnjoin(char *line, char *buffer, unsigned int buff_n,
 		unsigned int *line_size)

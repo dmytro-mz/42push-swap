@@ -6,7 +6,7 @@
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 12:48:28 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/04/10 17:03:51 by dmoroz           ###   ########.fr       */
+/*   Updated: 2024/04/14 11:09:03 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	check_malloc(void *ptr)
 {
 	if (!ptr)
 	{
-		ft_putendl_fd("Error", 2);
+		ft_putendl_fd("Error", STDERR_FILENO);
 		exit(42);
 	}
 }

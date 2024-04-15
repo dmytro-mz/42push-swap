@@ -6,7 +6,7 @@
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 13:06:03 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/04/11 13:28:38 by dmoroz           ###   ########.fr       */
+/*   Updated: 2024/04/14 11:08:59 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,6 @@ static void	do_on_error(void *stacks, int is_free_args, void *args)
 	free(stacks);
 	if (is_free_args)
 		free_split(args);
-	ft_putendl_fd("Error", 2);
+	ft_putendl_fd("Error", STDERR_FILENO);
 	exit(42);
 }

@@ -9,6 +9,10 @@ GNL_DIR = ./ftgnl
 SRCS_GNL = get_next_line_bonus.c get_next_line_utils_bonus.c
 SRCS = $(addprefix $(GNL_DIR)/, $(SRCS_GNL))
 OBJS = $(SRCS:.c=.o)
+INCS = $(LIBFT_DIR)/libft.h \
+       $(GNL_DIR)/get_next_line_bonus.h
+INCS_DIR = $(dir $(INCS))
+INC_FLAGS = $(addprefix -I, $(INCS_DIR))
 
 all: $(NAME)
 
@@ -20,9 +24,11 @@ $(NAME): libprintf $(OBJS)
 	ar r $(NAME) $(OBJS)
 
 clean:
+	$(MAKE) clean -C $(LIBPRINTF_DIR)
 	rm -f $(OBJS)
 
 fclean: clean
+	$(MAKE) fclean -C $(LIBPRINTF_DIR)
 	rm -f $(NAME)
 
 re: fclean all

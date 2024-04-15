@@ -6,7 +6,7 @@
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 12:48:28 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/04/11 16:15:24 by dmoroz           ###   ########.fr       */
+/*   Updated: 2024/04/14 11:08:56 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	print_solution(t_list *best)
 {
 	while (best)
 	{
-		ft_putendl_fd(best->content, 1);
+		ft_putendl_fd(best->content, STDOUT_FILENO);
 		best = best->next;
 	}
 }

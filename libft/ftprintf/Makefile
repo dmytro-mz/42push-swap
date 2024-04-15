@@ -36,9 +36,11 @@ $(NAME): libft $(OBJS)
 	ar r $(NAME) $(OBJS)
 
 clean:
+	$(MAKE) clean -C $(LIBFT_DIR)
 	rm -f $(OBJS)
 
 fclean: clean
+	$(MAKE) fclean -C $(LIBFT_DIR)
 	rm -f $(NAME)
 
 re: fclean all

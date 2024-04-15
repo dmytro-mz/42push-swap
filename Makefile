@@ -8,40 +8,52 @@ LIBFT_NAME = libdmoroz.a
 LIBFT = $(addprefix $(LIBFT_DIR)/, $(LIBFT_NAME))
 
 NAME = push_swap
-SRCS = operation_swap.c \
-       sort_ez.c \
-       validate_args.c \
-       sort_bubble_min.c \
-       is_sorted.c \
-       push_swap.c \
-       get_stack_extremum.c \
-       operation_push.c \
-       move_stack_to_closest_swap.c \
-       try_strategy.c \
-       operation_reverse_rotate.c \
-       sort_bubble_max.c \
-       do_cost_based_move.c \
-       check_malloc.c \
-       sort_ez_pz.c \
-       rotate_stack_to_n.c \
-       get_stack_size.c \
-       repeat.c \
-       sort_cost_based.c \
-       get_stack_edge.c \
-       estimate_n_update_cost.c \
-       is_empty_stack.c \
-       operation_rotate.c \
+SRCS = push_swap.c \
        parse_args.c \
+       validate_args.c \
+       operation_push.c \
+       operation_swap.c \
+       operation_rotate.c \
+       operation_reverse_rotate.c \
+       sort_bubble_min.c \
+       sort_bubble_max.c \
+       sort_ez.c \
+       sort_ez_pz.c \
+       sort_cost_based.c \
+       estimate_n_update_cost.c \
+       do_cost_based_move.c \
+       is_sorted.c \
+       is_empty_stack.c \
+       get_stack_size.c \
+       get_stack_edge.c \
+       get_stack_extremum.c \
+       try_strategy.c \
+       move_stack_to_closest_swap.c \
+       rotate_stack_to_n.c \
+       repeat.c \
+       check_malloc.c \
        free_solution.c
 OBJS = $(SRCS:.c=.o)
 INCS = push_swap.h \
        $(LIBFT_DIR)/libft/libft.h \
-       $(LIBFT_DIR)/ftgnl/get_next_line_bonus.h \
-       $(LIBFT_DIR)/ftprintf/ft_printf.h \
-       $(LIBFT_DIR)/ftprintf/print_single_format/print_single_format.h
+       $(LIBFT_DIR)/ftgnl/get_next_line_bonus.h
 INCS_DIR = $(dir $(INCS))
 INC_FLAGS = $(addprefix -I, $(INCS_DIR))
 LIB_FLAGS = -L$(LIBFT_DIR)/ -ldmoroz
+
+BONUS_NAME = checker
+BONUS_SRCS = checker_bonus.c \
+             parse_args.c \
+             validate_args.c \
+             operation_push.c \
+             operation_swap.c \
+             operation_rotate.c \
+             operation_reverse_rotate.c \
+             get_stack_edge.c \
+             is_sorted.c \
+             check_malloc.c \
+             free_solution.c
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 all: $(NAME)
 
@@ -55,14 +67,21 @@ debug: $(LIBFT)
 	$(CC) $(CFLAGS) $(C_DEBUG_FLAG) $(INC_FLAGS) $(SRCS) $(LIB_FLAGS) -o $(NAME)
 
 clean:
+	$(MAKE) clean -C $(LIBFT_DIR)
 	rm -f $(OBJS)
+	rm -f $(BONUS_OBJS)
 
 fclean: clean
+	$(MAKE) fclean -C $(LIBFT_DIR)
 	rm -f $(NAME)
+	rm -f $(BONUS_NAME)
 
 re: fclean all
 
-bonus: all # change if bonus will be made
+bonus: $(BONUS_NAME)
+
+$(BONUS_NAME): $(LIBFT) $(BONUS_OBJS)
+	$(CC) $(CFLAGS) $(BONUS_OBJS) $(INC_FLAGS) $(LIB_FLAGS) -o $(BONUS_NAME)
 
 $(LIBFT):
 	$(MAKE) all bonus clean -C $(LIBFT_DIR)
