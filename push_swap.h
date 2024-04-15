@@ -6,7 +6,7 @@
 /*   By: dmoroz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 12:45:08 by dmoroz            #+#    #+#             */
-/*   Updated: 2024/04/10 17:19:51 by dmoroz           ###   ########.fr       */
+/*   Updated: 2024/04/15 11:19:25 by dmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ void				try_strategy(t_state stack, t_list *(*f)(t_state),
 void				move_a_to_closest_swap(t_state *state, int n,
 						t_list **solution);
 void				free_solution(t_list *solution);
+t_list				*get_best_bubble_solution(t_state *state);
 
 #endif
